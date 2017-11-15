@@ -58,7 +58,7 @@ local_settings.py
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy stuff:mopSEf5JKsQA9bUmxyGjjNMi4omPWoYDHD
 .scrapy
 
 # Sphinx documentation
@@ -99,3 +99,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# BTC related
+.keys
