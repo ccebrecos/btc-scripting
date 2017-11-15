@@ -1,0 +1,3 @@
+[submodule "btc-framework"]
+	path = btc-framework
+	url = https://github.com/ccebrecos/btc-framework.git
