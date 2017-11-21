@@ -1,7 +1,7 @@
 import sys
 from btc_framework.bitcoin import OP_AND, OP_OR, OP_XOR, OP_1, OP_0
 from btc_framework.bitcoin import SignableTx, TxInput, TxOutput, script, \
-                                    address, P2PKHScriptSig
+                                    address
 
 
 if __name__ == "__main__":
