@@ -1,7 +1,7 @@
 import sys
 # OPCODES to use
 from btc_framework.bitcoin import OP_2MUL, OP_2DIV, OP_MUL, OP_DIV, OP_MOD, \
-                                  OP_NUMEQUAL, OP_NEVF, OP_NUMEQUALVERIFY
+                                  OP_NUMEQUAL, OP_NEV, OP_NUMEQUALVERIFY
 # BTC related
 from btc_framework.bitcoin import SignableTx, TxInput, TxOutput, script, \
                                     address, VarInt
