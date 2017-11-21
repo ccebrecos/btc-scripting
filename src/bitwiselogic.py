@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
     # transaction related params
     utxo_id = bytes().fromhex(
-        "826d472b04e5bca232510370fce3325d6251a950815d5c2c30ec0401866fc0b0")
-    utxo_vout, utxo_value = 0, 39.99996160
+        "fde05f922e15d135306f4f1d709b4edef7f2fe7880ada825f7fdf694981eca90")
+    utxo_vout, utxo_value = 0, 39.969962
     fees = 0.005
     to_pay = utxo_value - fees
     to_pay_addr = address.P2PKH(public_key=sign_key.public_key)
@@ -28,8 +28,10 @@ if __name__ == "__main__":
     transaction.add_input(in0)
 
     # add outputs
-    test_script = script.Script([OP_0, OP_OR])
-    transaction.add_output(TxOutput(to_pay_addr.script, btc=to_pay))
+    or_script = script.Script([OP_1, OP_AND])
+    xor_script = script.Script([OP_0, OP_OR])
+    and_script = script.Script([OP_0, OP_XOR])
+    transaction.add_output(TxOutput(and_script, btc=to_pay))
 
     # sign
     transaction.inputs[0].script.sign(key=sign_key.private_key)
@@ -38,11 +40,9 @@ if __name__ == "__main__":
     print(transaction)
     print(transaction.serialize().hex())
 
-    """
     # SPEND THE PREVIOUS TRANSACTION
     # transaction related params
-    to_pay_addr = address.P2PKH(public_key=sign_key.public_key)
-    utxo_id, utxo_num, to_pay = transaction.id, 0, to_pay - fees
+    utxo_id, utxo_vout, to_pay = transaction.id, 0, to_pay - fees
 
     # create new transaction
     spendtx = SignableTx()
@@ -50,11 +50,10 @@ if __name__ == "__main__":
     # fill transaction
     # add inputs
     spend_script = script.Script([OP_1])
-    spendtx.add_input(TxInput(utxo_id, utxo_num, spend_script))
+    spendtx.add_input(TxInput(utxo_id, utxo_vout, spend_script))
     # add outputs
     spendtx.add_output(TxOutput(to_pay_addr.script, btc=to_pay))
 
     # return transaction created
     print(spendtx)
     print(spendtx.serialize().hex())
-    """
