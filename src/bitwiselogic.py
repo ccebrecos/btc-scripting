@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
     # transaction related params
     utxo_id = bytes().fromhex(
-        "fde05f922e15d135306f4f1d709b4edef7f2fe7880ada825f7fdf694981eca90")
-    utxo_vout, utxo_value = 0, 39.969962
+        "a8ca799198c9564ad3a7660ec87693df72a82a2b3b55d41b23113d15bc8b00a2")
+    utxo_vout, utxo_value = 0, 39.95996199
     fees = 0.005
     to_pay = utxo_value - fees
     to_pay_addr = address.P2PKH(public_key=sign_key.public_key)
@@ -28,9 +28,9 @@ if __name__ == "__main__":
     transaction.add_input(in0)
 
     # add outputs
-    or_script = script.Script([OP_1, OP_AND])
-    xor_script = script.Script([OP_0, OP_OR])
-    and_script = script.Script([OP_0, OP_XOR])
+    and_script = script.Script([OP_1, OP_AND])
+    or_script = script.Script([OP_0, OP_OR])
+    xor_script = script.Script([OP_0, OP_XOR])
     transaction.add_output(TxOutput(and_script, btc=to_pay))
 
     # sign
