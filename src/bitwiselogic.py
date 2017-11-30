@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
     # transaction related params
     utxo_id = bytes().fromhex(
-        "a8ca799198c9564ad3a7660ec87693df72a82a2b3b55d41b23113d15bc8b00a2")
-    utxo_vout, utxo_value = 0, 39.95996199
+        "8bcd1b54979492c08fb21f2d9f70307c79277e8f60cca606f7dff5a089216399")
+    utxo_vout, utxo_value = 0, 9.99499999
     fees = 0.005
     to_pay = utxo_value - fees
     to_pay_addr = address.P2PKH(public_key=sign_key.public_key)
