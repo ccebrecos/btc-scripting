@@ -2,7 +2,7 @@ import sys
 # OPCODES to use
 from btc_framework.bitcoin import OP_2MUL, OP_2DIV, OP_MUL, OP_DIV, OP_MOD, \
                                   OP_NUMEQUAL, OP_NEV, VarInt, OP_EQUAL, \
-                                  ScriptNum
+                                  ScriptNum, ScriptData
 # BTC related
 from btc_framework.bitcoin import SignableTx, TxInput, TxOutput, script, \
                                     address
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     transaction.add_input(in0)
 
     # add outputs
-    test_script = script.Script([OP_2MUL, ScriptNum(26), OP_EQUAL])
+    test_script = script.Script([OP_2MUL, ScriptData(ScriptNum(26)), OP_EQUAL])
     transaction.add_output(TxOutput(test_script, btc=to_pay))
 
     # sign
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     # fill transaction
     # add inputs
-    spend_script = script.Script([ScriptNum(13)])
+    spend_script = script.Script([ScriptData(ScriptNum(13))])
     spendtx.add_input(TxInput(utxo_id, utxo_vout, spend_script))
     # add outputs
     spendtx.add_output(TxOutput(to_pay_addr.script, btc=to_pay))
